@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:flutter_facebook_login_with_web/flutter_facebook_login_with_web.dart';
 import 'package:http/http.dart' as h;
 
 class AuthProvider extends ChangeNotifier {
@@ -15,11 +15,9 @@ class AuthProvider extends ChangeNotifier {
 
   Future<dynamic> signInWithFacebook() async {
     print('begin');
-    final FacebookLoginResult result =
-        await _fblogin.logIn(permissions: [FacebookPermission.email]);
-
+    final result = await _fblogin.logIn(['email', 'public_profile']);
     switch (result.status) {
-      case FacebookLoginStatus.Success:
+      case FacebookLoginStatus.loggedIn:
         final FacebookAccessToken accessToken = result.accessToken;
         AuthCredential fbCredential =
             FacebookAuthProvider.credential(accessToken.token);
@@ -39,12 +37,12 @@ class AuthProvider extends ChangeNotifier {
           });
         });
         break;
-      case FacebookLoginStatus.Cancel:
+      case FacebookLoginStatus.cancelledByUser:
         print('Login cancelled by the user.');
         break;
-      case FacebookLoginStatus.Error:
+      case FacebookLoginStatus.loggedIn:
         print('Something went wrong with the login process.\n'
-            'Here\'s the error Facebook gave us: ${result.error}');
+            'Here\'s the error Facebook gave us: ${result.errorMessage}');
         break;
     }
     print('end');
