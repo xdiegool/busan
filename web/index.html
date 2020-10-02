@@ -18,26 +18,13 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
-  <script src="main.dart.js" type="application/javascript"></script>
+  
   <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+ 
 
 <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyAo4xJMRe34oU9nXM7PeiNBR_Z9QbTYZ-g",
     authDomain: "sarahahchat-a380a.firebaseapp.com",
@@ -48,10 +35,8 @@
     appId: "1:351918246464:web:ae7e6a5d312bbfa08ceda5",
     measurementId: "G-VKBD0B5WL5"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
 </script>
-
+<script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
