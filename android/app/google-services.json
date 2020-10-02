@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "351918246464",
+    "firebase_url": "https://sarahahchat-a380a.firebaseio.com",
+    "project_id": "sarahahchat-a380a",
+    "storage_bucket": "sarahahchat-a380a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351918246464:android:dacf708cee7946848ceda5",
+        "android_client_info": {
+          "package_name": "com.sarahah.sarahah_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351918246464-pc8cs1l3g47sj7ltnvjfna4tnvi1sqcg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarahah.sarahah_chat",
+            "certificate_hash": "1ddf58c98edfb8d11e66e9046dd85dfca11c1c17"
+          }
+        },
+        {
+          "client_id": "351918246464-neut0ee7kut5ubvjlnkp6abuobs218l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ELRJhzhbphyKbv8JV_kF4BlM8M36o3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351918246464-neut0ee7kut5ubvjlnkp6abuobs218l5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "351918246464-abjrk042cem2g62qsq1m0rmrk3m370o6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "sarahah.chat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
