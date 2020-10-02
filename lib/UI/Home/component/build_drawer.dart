@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sarahah_chat/appConfig/app_config.dart';
 import 'package:sarahah_chat/provider/auth_provider.dart';
-import 'package:sarahah_chat/provider/user_provider.dart';
 
 class BuildDrawer extends StatefulWidget {
   @override
