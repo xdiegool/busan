@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sarahah_chat/UI/Auth/auth_screen.dart';
 import 'package:sarahah_chat/UI/Home/home_screen.dart';
+import 'package:sarahah_chat/UI/chat/chat_screen.dart';
 import 'package:sarahah_chat/provider/auth_provider.dart';
+import 'package:sarahah_chat/provider/chat_provider.dart';
+import 'package:sarahah_chat/provider/home_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +23,19 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => HomeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ChatProvider(),
         )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.pink,
+          accentColor: Colors.black,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: StreamBuilder(
@@ -38,6 +48,7 @@ class MyApp extends StatelessWidget {
             }),
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
+          ChatScreen.routeNamed: (context) => ChatScreen(),
         },
       ),
     );

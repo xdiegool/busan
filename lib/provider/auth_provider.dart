@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login_with_web/flutter_facebook_login_with_web.dart';
 import 'package:http/http.dart' as h;
+import 'package:sarahah_chat/model/auth_model.dart';
 
 class AuthProvider extends ChangeNotifier {
   static final FacebookLogin _fblogin = FacebookLogin();
@@ -32,13 +33,17 @@ class AuthProvider extends ChangeNotifier {
           await FirebaseFirestore.instance
               .collection('Users')
               .doc(user.user.uid)
-              .set({
-            'fierbaseUID': user.user.uid,
-            'FacebookUID': profile['id'],
-            'name': profile['name'],
-            'email': profile['email'],
-            'photoUrl': profile['picture']['data']['url'],
-          });
+              .set(
+                AuthModel().toMap(
+                  AuthModel(
+                    fierbaseUID: user.user.uid,
+                    facebookUID: profile['id'],
+                    name: profile['name'],
+                    email: profile['email'],
+                    photoUrl: profile['picture']['data']['url'],
+                  ),
+                ),
+              );
         });
         break;
       case FacebookLoginStatus.cancelledByUser:
