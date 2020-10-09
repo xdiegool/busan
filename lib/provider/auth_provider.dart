@@ -29,7 +29,6 @@ class AuthProvider extends ChangeNotifier {
           var graphResponse = await h.get(
               'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(200)&access_token=${result.accessToken.token}');
           var profile = json.decode(graphResponse.body);
-          print(profile.toString());
           await FirebaseFirestore.instance
               .collection('Users')
               .doc(user.user.uid)

@@ -9,12 +9,11 @@ class HomeProvider extends ChangeNotifier {
   BehaviorSubject<List<UserModel>> _usersInfo = BehaviorSubject();
   Stream<List<UserModel>> get getUserInfo => _usersInfo.stream;
   Future<dynamic> fetchUsersInfo() async {
-    final userid = await _auth.currentUser.uid;
     print('herrrrrrrrrrrrrrrrrrrrrrrrrr'+ _auth.currentUser.uid.toString());
     List<UserModel> _userData = [];
     QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('Users')
-        .where('fierbaseUID', isLessThan: userid)
+        .where('fierbaseUID', isLessThan: _auth.currentUser.uid)
         .get();
     snapshot.docs.forEach((element) {
       _userData.add(UserModel.fromMap(element.data()));

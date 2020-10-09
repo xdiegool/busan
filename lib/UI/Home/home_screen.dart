@@ -13,7 +13,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig().init(context);
     final homeProvider = Provider.of<HomeProvider>(context, listen: false);
-    homeProvider.fetchUsersInfo();
+    Future.delayed(Duration(seconds: 3),(){
+      homeProvider.fetchUsersInfo();
+
+    });
     return Scaffold(
         appBar: AppBar(
           title: Text('Sarahah Chat'),
@@ -21,11 +24,13 @@ class HomeScreen extends StatelessWidget {
         drawer: BuildDrawer(),
         body: StreamBuilder(
           stream: homeProvider.getUserInfo,
-          builder: (context, snapshot) => snapshot.hasData
+          builder: (context, snapshot) {
+            print (snapshot.data);
+            return snapshot.hasData
               ? buildUsersList(snapshot.data)
               : Center(
                   child: CircularProgressIndicator(),
-                ),
+                );},
         ));
   }
 
