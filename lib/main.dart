@@ -5,9 +5,12 @@ import 'package:provider/provider.dart';
 import 'package:sarahah_chat/UI/Auth/auth_screen.dart';
 import 'package:sarahah_chat/UI/Home/home_screen.dart';
 import 'package:sarahah_chat/UI/chat/chat_screen.dart';
+import 'package:sarahah_chat/UI/setting/setting_screen.dart';
+import 'package:sarahah_chat/UI/user_info.dart/user_info_screen.dart';
 import 'package:sarahah_chat/provider/auth_provider.dart';
 import 'package:sarahah_chat/provider/chat_provider.dart';
 import 'package:sarahah_chat/provider/home_provider.dart';
+import 'package:sarahah_chat/provider/user_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,13 +32,16 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ChatProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
         )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.pink,
-          accentColor: Colors.black,
+          accentColor: Colors.purple,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: StreamBuilder(
@@ -49,6 +55,8 @@ class MyApp extends StatelessWidget {
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
           ChatScreen.routeNamed: (context) => ChatScreen(),
+          SettingScreen.routeName: (context) => SettingScreen(),
+          UserInfoScreen.routeName: (context) => UserInfoScreen(),
         },
       ),
     );

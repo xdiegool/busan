@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login_with_web/flutter_facebook_login_with_web.dart';
 import 'package:http/http.dart' as h;
 import 'package:sarahah_chat/model/auth_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   static final FacebookLogin _fblogin = FacebookLogin();
@@ -16,6 +17,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<dynamic> signInWithFacebook() async {
     print('begin');
+    SharedPreferences userInfo = await SharedPreferences.getInstance();
     final result = await _fblogin.logIn(['email', 'public_profile']);
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
@@ -26,6 +28,7 @@ class AuthProvider extends ChangeNotifier {
         FirebaseAuth.instance
             .signInWithCredential(fbCredential)
             .then((user) async {
+          userInfo.setString('firebaseUID', user.user.uid);
           var graphResponse = await h.get(
               'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email,picture.height(200)&access_token=${result.accessToken.token}');
           var profile = json.decode(graphResponse.body);
