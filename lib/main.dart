@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.purple,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        // home: HomeScreen(),
         home: StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
